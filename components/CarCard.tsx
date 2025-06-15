@@ -18,7 +18,7 @@ const CarCard = ({ data }: IProps) => {
           width={300}
           height={200}
           className="object-contain w-full h-auto transition-transform duration-300 group-hover:scale-110"
-          loading="eager"
+          priority
         />
       </div>
 
