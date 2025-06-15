@@ -12,6 +12,10 @@ export interface ICar {
   images: {
     image: string[];
   };
+  run: number;
+  color: string;
+  state: string;
+  owners_number: number;
 }
 
 export interface IPaginatedMeta {

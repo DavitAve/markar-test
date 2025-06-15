@@ -11,8 +11,9 @@ interface IProps {
   data: ICar[];
   page?: string;
   order?: string;
+  lastPage?: number;
 }
-const CarsGrid = ({ data, page: propPage, order }: IProps) => {
+const CarsGrid = ({ data, page: propPage, order, lastPage }: IProps) => {
   const router = useRouter();
 
   const [page, setPage] = useState(Number(propPage));
@@ -41,7 +42,7 @@ const CarsGrid = ({ data, page: propPage, order }: IProps) => {
           value={sort}
           placeholder="Сортировать"
           onChange={handleSetSort}
-          className='w-full sm:w-64'
+          className="w-full sm:w-64"
         />
       </div>
       <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-3">
@@ -49,7 +50,7 @@ const CarsGrid = ({ data, page: propPage, order }: IProps) => {
           <CarCard key={idx} data={car} />
         ))}
       </div>
-      <Pagination currentPage={page} totalPages={157} onPageChange={handleSetPage} />
+      <Pagination currentPage={page} totalPages={lastPage || 0} onPageChange={handleSetPage} />
     </div>
   );
 };

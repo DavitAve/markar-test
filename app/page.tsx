@@ -9,11 +9,21 @@ const Home = async ({ searchParams }: Props) => {
   const { page = '1', order = 'none' } = await searchParams;
 
   const res = await getCars({ page: page.toString(), order: order?.toString() });
+  console.log({ res });
 
   return (
     <div className="flex flex-col gap-4 container mx-auto pt-4 sm:px-0 px-3">
       <h1 className="text-4xl">Каталог машин</h1>
-      {res ? <CarsGrid data={res.data} page={page.toString()} order={order?.toString()} /> : <div>No Data</div>}
+      {res ? (
+        <CarsGrid
+          data={res.data}
+          page={page.toString()}
+          order={order?.toString()}
+          lastPage={res.meta.last_page}
+        />
+      ) : (
+        <div>No Data</div>
+      )}
     </div>
   );
 };
