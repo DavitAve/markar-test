@@ -11,9 +11,13 @@ export async function generateMetadata(props: { searchParams: SearchParams }) {
 const Home = async (props: { searchParams: SearchParams }) => {
   const searchParams = await props.searchParams;
   const { page = '1', order = 'none' } = searchParams;
-
+  console.log({props: props.searchParams});
+  
   const res = await getCars({ page: page.toString(), order: order?.toString() });
-
+  console.log({
+    res
+  });
+  
   return (
     <div className="flex flex-col gap-4 container mx-auto pt-4 sm:px-0 px-3">
       <h1 className="text-4xl font-bold text-gray-800">Каталог машин</h1>
